@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM learning</title>
+    <style>
+        .bg-black {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div>
+        <h1 style="color: blue" id="title" class="heading">DOM learning on chai aur code 
+            <span style="display: none">test text</span></h1>
+            <h2>lorem ipseum dolor sit.</h2>
+            <h2>lorem ipseum dolor sit.</h2>
+            <p>Lorem ipsum dolor sit amet.</p>
+            <input type="password" name="" id="">
+            <ul>
+                <li class="list-item">one</li>
+                <li class="list-item">two</li>
+                <li class="list-item">three</li>
+                <li class="list-item">four</li>
+            </ul>
+    </div>
+</body>
+</html>
+
+<!-- ab ham apne isi page ko manupilate krenge 
+ sabse pehle apan kaise access krte hai apne page ko
+ document keyword use krke ham apne page ki js ke through html
+ se info leke krte hai--
+>>>>document.getElementById("title") {ye muje html file main jo title nam se id
+hai uska poora part print krke dega}
+
+aise hi ham bahut sari chize perform kr skte hai, aur ye ham apne page pe jake inspect
+pe console pe jake dekh skte hai.
+
+ek aur 
+>>>>document.getElementById("title").className
+ye hame class ka name dega jaise title id main heading name ki class use kri hai hamne
+
+aise hi ham attribute bi print kra skte hai
+>>>>document.getElementById("title").getAttribute("id")
+
+>>>>document.getElementById('title').setAttribute('class','test')
+iske through ham apni class ka name change ya set kr skte hai.
+
+
+aur ham vhi pe usse style bi kr skte hai 
+jaise -
+
+>>>> const title = document.getElementById("title")
+>>>> title.style.backgroundColor = "blue"
+>>>> title.style.padding = "15px"
+>>>> title.style.backgroundRadius = "15px" 
+
+ab ham dekhenge ki content to add kaise kiya jata hai
+
+title.textContent // jo jo likha hai sab dikhega no matter hamne usse print krane ko nhi bola, hidden text
+title.innerHTML // poora html ka value return krega with code
+title.innerText // jo ham display krana chahte hai page pe vhi dikhega
+kabi kabi same output aa jata hai(condition dependent) but hai different teeno chize
+
+ab ek aur chiz ati hai, which is query selector
+isse main apne html code ki queries le skte hai and unko manupilate bi kr skte hai
+jaise---
+
+>>>> document.querySelector("h1")
+>>>> document.querySelectoe("h2")
+>>>> docuement.querySelector("#title")
+>>>> docuement.querySelector(".heading")
+>>>> docuement.querySelector("input")
+>>>> docuement.querySelector("input[type="password"]")
+
+ ab hamne ek un-ordered list banayi hai uske upper operations perform krenge
+
+>>>>document.querySelector("ul")
+// <ul>​<li>​…​</li>​<li>​…​</li>​<li>​…​</li>​</ul>​
+>>>>const myUnorderedList = document.querySelector('ul')
+// undefined
+>>>>myUnorderedList.querySelector('li')
+// <li>​::marker​"one"</li>​
+>>>>const turnGreen = myUnorderedList.querySelector('li')
+// undefined
+>>>>turnGreen.style.backgroundColor = "green"
+// 'green'
+>>>>turnGreen.style.padding = "10px"
+// 10px
+>>>>turnGreen.innerText = "five"
+// 'five'
+
+Jo hamare html collection hai aur node list hai ye hamare
+pure arrays nhi hai to arrays ke sath confuse nhi hona hai ismaim
+bhale hi froeach diya hai iske prototype main but map vagera nhi hai.
+
+ab ham use krenge querySelectorAll 
+ab ham node list main array jaise methods perform nhi kr skte
+but kuch hadh tak kr skte hai aur jab ham node list ko manupilate krte hai toh 
+hame apne method ko specify krna hota hai ki kis element pe ham vo apply krna chahte hai
+array ki tarah har element pe loop lagake nhi kr skte hai
+
+>>>> const myH1 = document.querySelectorAll('h1')
+>>>> myH1[0].style.color = "green"
+// 'green'
+
+node list main ham forEach loop ko use kr skte hai kyuki vo uske prototype main hame dikha tha
+
+>>>> const templiList = document.querySelectorAll('li')
+>>>> templiList.forEach( function (L) {
+    L.style.backgroundColor = 'green'
+} )
+
+
+/// HTML collection and node list main bi major differences hote hai ////
+
+HTML collection pe loop lagane ke lia use convert krna padega
+
+>>>>const tempClassList = document.getElementsByClassName("list-item")
+// undefined
+
+>>>> tempClassList
+// HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+>>>>Array.from(tempClassList)
+// (4) [li.list-item, li.list-item, li.list-item, li.list-item] ye ab array main covert hooke mil chuka hai hame
+
+>>>> const myConvertedArray = Array.from(tempClassList)
+// undefined
+
+>>>> myConvertedArray
+// (4) [li.list-item, li.list-item, li.list-item, li.list-item]
+
+>>>> myConvertedArray.forEach(function (li) {
+  li.style.color= 'orange'  
+})
+// undefined
+
+
+-->
