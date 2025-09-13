@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | chai aur code</title>
+</head>
+<body style="background-color: #212121; color: #fff">
+    <div class="parent">
+        <!-- this is a comment-->
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+<!-- abi ham yahi pe script node banake uske andar apni html file ko access/manupilate 
+ karenge java script ko use kr ke, pehle video mainn ham direct console pe krre the ab ham khud 
+ apni file ko access krenge yhi pe code krke-->
+<script>
+    const parent = document.querySelector('.parent') // accessing parent class
+    // console.log(parent) // getting element of parent class
+    // console.log(parent.children) // from this we will get html collection
+    // console.log(parent.children[1].innerHTML) // from this we will get the exact entry of that child class 'tuesday'
+    
+    for (let i = 0; i < parent.children.length; i++) {
+        console.log(parent.children[i].innerHTML)
+    }
+    
+    parent.children[1].style.color = "orange"//tuesday ka color orange ho jayega
+    
+    console.log(parent.firstElementChild) // sabse pehli jo child class hai vo jake print ho jayegi
+    console.log(parent.lastElementChild) // sabse last jo child class hai vo jake print ho jayegi
+
+    const dayOne = document.querySelector('.day')
+    console.log(dayOne) // monday print ho jayega
+    // agar ha,e direct parent class pe jana hai is child class ki to
+    console.log(dayOne.parentElement)
+    // ab hame agar usi child element ke next element pe jana hai toh
+    console.log(dayOne.nextElementSibling)//tuesday
+
+    console.log("NODES: ", parent.childNodes)
+    /* ye ek node list return krega aur usmain 9 elements dikhayega, iska mtlb 
+    ye hai ki, isne ke tree strucuture return kra hai ki  paresnt class main 
+    jo kaam hua hai uske piche system ne kitta kaam kiya hai jo hame ye 
+    hamamri screen pe aake dikh rha hai*/
+
+    /* ab ham sikhenge ki node list progamme ke through kaise create krte hai
+    uske lia ek new file create kr rha hu mai */
+
+
+</script>
+</html>
