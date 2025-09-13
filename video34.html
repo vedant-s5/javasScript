@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chai aur code | DOM</title>
+<html>
+  <body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+      <li>Javascript</li>
+    </ul>
+
+    <script>
+      function addLanguage(langName) {
+        const li = document.createElement('li');
+        li.innerHTML = `${langName}`;
+        document.querySelector('.language').appendChild(li);
+      }
+
+      addLanguage("python")
+      addLanguage("typescript")
+      /* ab ye hamne func bana diya ab easily hame apni list main jo jo
+      add krana h hma kra skte hai verna to hame ek ek element ke lia  code krna 
+      pdta aur list item banana padta isse easily hogya hai*/
+      
+      /* ab iski bi ek dikkat hai vo kya hai ki jitti bar bi ham usse kuch appen krne ke lia
+      denge utti baar vo poora tree traverse krega meaning ye hai ki
+      hr bar vo starting se list travel krega aur last main element add krega
+      to isse kai baar optimization issue aa jata hai */
+
+      function addOptiLanguage(langName) {
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName))
+        document.querySelector('.language').appendChild(li)
+      }
+      addOptiLanguage("golang")
+    /* ab yha pe optimization badiya islia hai ki ab jab bi new lang add krenge
+    toh poore elements ko traverse nhi krega vo, ek textNode banayega aur add kr dega */
+
+    // ab hame koi value EDIT krni hai to kaise krenge
+
+    const secondLang = document.querySelector('li:nth-child(2)')
+    // console.log(secondLang)
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli) // ab python Mojo se replace ho jayega
+    
+    // one more edit example, replace javascript with typescript
+
+    const firstLang = document.querySelector('li:first-child')
+    firstLang.outerHTML = "<li>typescript</li>" /* outer HTML change krne ke lia pooa html code 
+    dena padega islia yha pe hamne poora <li></li> ke sath likha h */
+    
+    // ab ham remove krte hai, removing golang
+
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()//hogya remove golang
+    </script>
+  </body>
+</html>
