@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+    // document.getElementById('owl').onclick = function (){
+    //     alert("owl clicked")
+    // } 
+    /* onclick use krne main koi dikkat nhi hai bas ye hame eventlistener ke 
+    comaprison main kam bahut kam features deta hai */
+
+    // One more feature is there which we use - attachEvent(), ye pehle time main kaam ata tha
+
+    // pehle jQuery frame work hota tha usmain ham events .on krke use krte the
+
+    /* do some learning about these topics
+        type, timestamp, defaultPrevent
+        target, toElement, srcElement, currentTarget
+        clientX, clientY, screenX, screenY
+        altkey, ctrlkey, shiftkey, keycode
+    */
+
+    /* addEventListener islia use krte hai ki vo ache features deta hai
+    jaise, keyboard actions, mouse actions, double clicks etc */
+    
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     console.log("clicked inside the ul")
+    // }, false) 
+    
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log("owl clicked")
+    //     e.stopPropagation()
+    // }, false)
+    
+    /* ab yha pe ye baat ati hai ki event propagation main do chize hoti hai 
+    event bubble and event capture, to hamara event propagation defaultly false hi hota
+    hai jismain event bubble hota hai and true main event capture hota hai 
+    to jab ham ul main click krenge to sirf vahi ayega but jab owl pe click krenge to 
+    pehle owl clicked print hoga phir doosra print hoga aur event capture main ulta hoga
+    event bubble main vo niche se upper jata hai mtlb child class ka pehle
+    print hoga phir vo upper jata jayega, vo hampe depend hai ki hame kis tarah se show 
+    krna hai */
+    /* ab ham agar ye chahte hai ki event propagation na ho mtlb jab ham owl pe click kre to 
+    ul wala statement bi print na ho to uske lia ham stopPropagation() use krte hai*/
+
+    // document.getElementById('google').addEventListener('click',function (e){
+    //     e.preventDefault() // ab ye link pe click rkne per google pe nhi leke jayega
+    //     e.stopPropagation()
+    //     console.log("google clicked")
+    // }, false)
+
+    document.querySelector('#images').addEventListener('click',function(e){
+        console.log(e.target.tagName)
+        if (e.target.tagName === 'IMG'){
+            console.log(e.target.id)
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+        }
+        //2nd tarika
+        // removeIt.parentNode.removeChild(removeIt)
+    })
+    /* ab agar ham list item main click krenge to sabke sab delete ho jayenge 
+    cuz li ka parent ul aur ul ke andar sab ara hai islia sab remove ho jayega
+    */ 
+
+
+
+</script>
+</html>
