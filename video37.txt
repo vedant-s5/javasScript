@@ -1,0 +1,37 @@
+                    // async code //
+
+Javascript -->
+            1. synchronous - meanin ghai ki har code line by line execute hoga, 
+            sab ek sath execute nhi hoga.
+            2. single thread
+    // these all properties are of default javascript //
+
+execution context ---> execute one line of code at a time
+         |  console log -> 1
+         |                             (each operation waits for the lost one to
+         |                              complete before executing) 
+         |  console log -> 2
+         |
+         |   call stack and maemory and heap
+
+            // Blocking Code Vs Non Blocking Code //
+
+1. Blocking Code - blocks the flow of the program, example ye hai ki suppose
+bola ki aap yhi baitho mai paani leke aya to jab tak mai pani ni leke ata tab tak
+vo kuch nhi kr skta, aur apna system wala example hota hai ki suppose ek user ne 
+site pe register kra aur hamari file main req gyi hai aur vo data read and write krra hai 
+to jab tak vo vha data confirmation nhi lata hai tab tak user ko success message nhi milega.
+blocking code file ko synchronous mode main read hai.
+
+2. Non Blocking Code - does not block the flow of the program, example ye hai ki suppose mainy bol
+aap yha baithke phone chalao mai paani leke aya to mera program kaam kr rha hai bhale hi mai pani 
+leke au ya paani na leke aau, aur apna system wala example ye hai ki suppose hamne website se user ki req 
+bheji file ke andar read and write krne ke lia to ismain ye hoga ki user ke register krte hi success message 
+use mil jayega jab abi bi vha file red ho rhi hai, agaar req fail ho gyi lekin hamne to success de diya user ko
+ye to ye to gad bad ho jayegi, islia hamesha non blocking code sai nhi hota hai.
+Non blocking code reads file in async mode.
+
+
+
+
+
