@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur code</h1>
+    <button id="stop">stop</button>
+</body>
+<script>
+    const sayhitesh = function (){
+        console.log("hitesh")
+    }
+    const changeText = function(){
+    
+        document.querySelector('h1').innerHTML = "best Js series"
+    }
+    const changeMe = setTimeout(changeText,2000)
+    document.querySelector('#stop').addEventListener('click',function (){
+        clearTimeout(changeMe)
+        console.log("STOPPED")
+
+    })
+    /* ab ye krna hai ki us time interval ke bich main agar hame usko print hone se rokna hai 
+    to clearTimeout ka use krenge ham*/ 
+    // setTimeout(sayhitesh,2000)
+    /* 2 sec baad ye hitesh print kr dega, aur ek baar hi krega 
+    czu obvi hai ki timeout func hai to utte time lia wait krega phir
+    ek baar print kr dega*/
+
+</script>
+</html>
