@@ -1,0 +1,54 @@
+                    <!-- API REQUEST -->
+
+<!-- bahut sari free apis hoti hai aur kuch websites apni api use krna allow krti hai
+ aur ham kuch websites use bi kr skte hai api ko samjhne ke json formatter-->
+
+<!-- XMLHTTP request ke bare main mdn ki website pe padh skte h-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #212121 ;">
+    Value	State	Description
+0	UNSENT	Client has been created. open() not called yet.
+1	OPENED	open() has been called.
+2	HEADERS_RECEIVED	send() has been called, and headers and status are available.
+3	LOADING	Downloading; responseText holds partial data.
+4	DONE	The operation is complete.
+</body>
+<script>
+    // abi ham ek xml req bhejenge aur data lenge to vo kaise krte hai dekhte hai
+    const requestUrl = 'https://api.github.com/users/vedant-s5'
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET',requestUrl) 
+    /* ye hi hamari req bhejega but abi isne req bheji
+    nhi hai req bhejne ke lia hame open ko call krna padega, vo kaise krte hai*/
+    /* jo hamne req bheji hai vo change hoti rehti hai, jo ready state hai vo
+    continueously change hoti rehti hai (0,1,2,3,4)*/
+    xhr.onreadystatechange = function(){
+        console.log(xhr.readyState)
+        if (xhr.readyState === 4) {
+            const data = JSON.parse(this.responseText)
+            /* ye apan Json main convert krenge cuz ye hamara Json data hai
+            to JSON.parse string ko jason main convert kr deta hai*/
+            console.log(typeof data)
+            console.log(data.followers)
+            /*yha pe hame undefined dekhne ko milega kyuki most of the time
+            api se jab bi data ata hai to String ki form main ata hai 
+            lekin hame toh object main chaiye data, to ham use convert kr denge*/
+        }
+    }
+    xhr.send()
+    /* xhr.open tak hamari readystate 1 ho gyi thi, hamne ek hi
+    baar console log kra to ek bar show krdi usne but hame to continuously track krni hai*/    
+    
+    /*ab jaise jaise hamari readystate change hogi vaise vaise vo hame print krta jayega kyuki
+    jaise hi change hogi hamara func execute hoga, and phir jaise hi hamari state 4 ho jayegi uske 
+    baad vo hame hamari api ka response text de dega*/
+</script>
+</html>
+
