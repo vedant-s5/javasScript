@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button>button clicked</button>
+</body>
+<script>
+    class React {
+        constructor(){
+            this.library = "React"
+            this.server = "https://localhost:300"
+
+            /* requirement ye hai ki jais ehi ye page load ho ek object create ho jaye react ka aur
+            hame, jo button hai uska reference mil jaye aur jab vo click ho to koi message mil jaye */
+            document
+                .querySelector('button')
+                .addEventListener('click',this.handleClick.bind(this))
+        }
+            /* ab yha pe kya hua ki jab hamne button ko click kra to usne button clicked 
+            to aya lekin jab hamne server call kra tp undefined aya, to kabi kabi react main jab 
+            ham call krte the this ke sath to ye issue common tha, kyuki this ka refernce to ara hai 
+            ki document main button ne call kra hai ye to ara hai but server print ni hora, isko theek 
+            krne ke lia ham 'bind' keyword ka use krte hai, hamne this ko bind kr diya hai, ab sirf reference nhi
+            jaye, balki jo ham chahte hai vo bi hamare pass ayega */
+        handleClick(){
+            console.log("button clicked");
+            console.log(this.server);
+        }
+    }
+    const app = new React()
+</script>
+</html>
