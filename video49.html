@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #313131">
+    <button id="orange">orange</button>
+    <button id="green">green</button>
+</body>
+<script>
+    // function init() {
+    //     var name = "Mozilla"; // name is a local variable created by init
+    //     function displayName() {
+    // // displayName() is the inner function, that forms a closure
+    //     console.log(name); // use variable declared in the parent function
+    //     }
+    //     displayName();
+    // }
+    // init();
+    
+    // function outer(){
+    //     let username = "hitesh"
+    //     console.log(secret);
+    /* nhi access kr payega cuz 
+    parent function(outer) cannot access child function(inner)*/
+        
+    //     function inner(){
+    //         console.log("inner", username);
+    //         let secret = "my123"
+    //     }
+    //     function innerTwo(){
+    //         console.log("innerTwo", username);
+    //         console.log(secret);
+    //         /* inner functions ek doosre ki prop,var access nhi kr skte hai*/
+            
+    //     }
+    //     inner()
+    //     innerTwo()
+    // } 
+    // outer()
+    // console.log("too outer", username);//not define milega
+    /* isse ham ye samjhte hai ki inner function outer functions ki 
+    properties,vairables ko access kr skte hai kyuki vo unka parent hai
+    */
+
+    // CLOSURE
+    /* closure main ham jis function ko hame bahar access krana hai
+    us function ke sath sath us function ka agar koi outer function hoga 
+    uska bi scope return hoke gayab ho jayega, agar scope hi nhi rha 
+    to aram se ham us function ki chizo ko bahar bi access kr skte hai,
+    jab bi ham inner func ko return krenge to poora ka poora lexical scope return hoga*/
+
+    // function makeFunc() {
+    //     const name = "Mozilla";
+    //     function displayName() {
+    //         console.log(name);
+    //     }
+    //     return displayName;
+    //     /*yha pe hamne function ka reference return kra hai mtlb execute
+    //     to hogya hai but display nhi krega, to refernce gya aur scope gayab uske
+    //     baad, ab krte rho function ki chizo ko access bahar*/
+    // }
+
+    // const myFunc = makeFunc();
+    // myFunc();
+
+</script>
+
+<!-- Now we will do a practical example-->
+
+<script>
+    // document
+    //     .getElementById("orange")
+    //     .addEventListener('click', function(){
+    //         document.body.style.backgroundColor = 'orange'
+    //     })
+    // document
+    //     .getElementById("green")
+    //     .addEventListener('click', function(){
+    //         document.body.style.backgroundColor = 'green'
+    //     })
+
+    /* ab kya krna hai ki bahut sare buttons hai aur har button
+    ke lia alag color hai aur unko click krke unki id ke hisab se color change krna 
+    hai bg ka*/
+
+        function clickhandler(color){
+            // document.body.style.backgroundColor = `${color}` // aise nhi krenge ham
+
+            return function(){
+                document.body.style.backgroundColor = `${color}`
+            }
+        }
+        
+        document.getElementById("orange").onclick = clickhandler("orange")
+        document.getElementById("green").onclick = clickhandler("green")
+
+        /* ab hamara aise kaam nhi chalega cuz onclick ne bola ki muje 
+        toh function chaiye lekin apne to function ko directly execute kr 
+        diya hai, jisse button kaam hi krenge lekin jo color diya hai vo change
+        ho jayega, lekin hame to aise krna hi nhi hai, uske lia ham closure ka use krenge,
+        ab hum clickhandle ke andar ek function pass krenge jo kaam body style ka
+        hi krega bas uska access gain krne ke lia hame uska refernce dena padega
+        func ko return krke*/
+</script>
+</html>
